@@ -9,3 +9,8 @@ type UserResponse struct {
 	AccessToken  string `json:"access_token"`
 	RefreshToken string `json:"refresh_token"`
 }
+
+type GetEmail struct {
+	ID    int    `json:"id"`
+	Email string `json:"email"`
+}

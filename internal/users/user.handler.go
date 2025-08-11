@@ -11,12 +11,22 @@ func RegisterRouter(r *gin.RouterGroup, s *UserService, jwt token.Maker, pas tok
 	handler := &UserHandler{s: s, jwt: jwt, pas: pas}
 	r.POST("/register", handler.RegisterUser)
 	r.POST("/login", handler.LoginUser)
+	r.GET("/gmail", handler.GetGmailUser)
 }
 
 type UserHandler struct {
 	s   *UserService
 	jwt token.Maker
 	pas token.Maker
+}
+
+func (h *UserHandler) GetGmailUser(c *gin.Context) {
+	response.SuccessResponse(c, 20000, gin.H{
+		"users": []GetEmail{
+			{ID: 1, Email: "huudat25072003@gmail.com"},
+			{ID: 2, Email: "qbulord0706@gmail.com"},
+		},
+	})
 }
 
 func (h *UserHandler) RegisterUser(c *gin.Context) {
