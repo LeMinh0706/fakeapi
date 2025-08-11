@@ -17,7 +17,7 @@ type PasetoMaker struct {
 var ErrInvalid = errors.New("invalid token")
 
 // CreateToken implements Maker.
-func (p *PasetoMaker) CreateToken(sub uuid.UUID, duration time.Duration) (string, error) {
+func (p *PasetoMaker) CreateToken(sub int32, duration time.Duration) (string, error) {
 	payload, err := NewPayload(uuid.New(), sub, duration)
 	if err != nil {
 		return "", err

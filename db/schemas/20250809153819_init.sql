@@ -5,9 +5,10 @@ CREATE TYPE "benchmark_ktype" AS ENUM (
 );
 
 CREATE TABLE "users" (
-  "id" uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  "username" text UNIQUE NOT NULL,
-  "password" text NOT NULL
+  "id" serial PRIMARY KEY,
+  "email" varchar UNIQUE NOT NULL,
+  "hashed_password" varchar NOT NULL,
+  "full_name" varchar NOT NULL
 );
 
 CREATE TABLE "candidate" (

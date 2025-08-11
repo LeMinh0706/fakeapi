@@ -8,14 +8,15 @@ import (
 )
 
 type Payload struct {
+	UserID int32 `json:"user_id"`
 	jwt.RegisteredClaims
 }
 
-func NewPayload(id uuid.UUID, sub uuid.UUID, duration time.Duration) (*Payload, error) {
+func NewPayload(id uuid.UUID, sub int32, duration time.Duration) (*Payload, error) {
 	return &Payload{
+		UserID: sub,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ID:        id.String(),
-			Subject:   sub.String(),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(duration)),
 		},

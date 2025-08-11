@@ -5,15 +5,17 @@ import (
 	"log"
 
 	"github.com/LeMinh0706/fakeapi/config"
+	"github.com/LeMinh0706/fakeapi/internal/candidates"
 	"github.com/LeMinh0706/fakeapi/internal/db"
 	"github.com/LeMinh0706/fakeapi/internal/users"
 	"github.com/LeMinh0706/fakeapi/pkg/token/token"
 )
 
 type Service struct {
-	user *users.UserService
-	jwt  token.Maker
-	pas  token.Maker
+	user      *users.UserService
+	candidate *candidates.CandidateService
+	jwt       token.Maker
+	pas       token.Maker
 }
 
 func NewService(conn *sql.DB) *Service {
@@ -25,8 +27,9 @@ func NewService(conn *sql.DB) *Service {
 		return nil
 	}
 	return &Service{
-		user: users.NewUserService(q),
-		jwt:  jwt,
-		pas:  pas,
+		user:      users.NewUserService(q),
+		candidate: candidates.NewCandidateService(q),
+		jwt:       jwt,
+		pas:       pas,
 	}
 }

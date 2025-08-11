@@ -6,7 +6,6 @@ import (
 
 	"github.com/LeMinh0706/fakeapi/internal/db"
 	"github.com/LeMinh0706/fakeapi/utils"
-	"github.com/google/uuid"
 )
 
 type UserService struct {
@@ -25,22 +24,21 @@ func (s *UserService) CreateUser(ctx context.Context, username, password string)
 		return err
 	}
 	return s.q.CreateUser(ctx, db.CreateUserParams{
-		Username: username,
-		Password: hash,
+		Email:          username,
+		HashedPassword: hash,
 	})
 }
 
-func (s *UserService) GetUserByUsername(ctx context.Context, username, password string) (uuid.UUID, error) {
+func (s *UserService) GetUserByUsername(ctx context.Context, username, password string) (int32, error) {
 
 	user, err := s.q.GetUserByUsername(ctx, username)
+	log.Println(user)
 	if err != nil {
-		return uuid.Nil, err
+		return 0, err
 	}
-
-	err = utils.CheckPassword(password, user.Password)
+	err = utils.CheckPassword(password, user.HashedPassword)
 	if err != nil {
-		log.Println("error here", user.Password, "<>", password)
-		return uuid.Nil, err
+		return 0, err
 	}
 	return user.ID, nil
 }

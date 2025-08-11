@@ -91,7 +91,8 @@ type JobDescription struct {
 }
 
 type User struct {
-	ID       uuid.UUID `json:"id"`
-	Username string    `json:"username"`
-	Password string    `json:"password"`
+	ID             int32  `json:"id"`
+	Email          string `json:"email"`
+	HashedPassword string `json:"hashed_password"`
+	FullName       string `json:"full_name"`
 }

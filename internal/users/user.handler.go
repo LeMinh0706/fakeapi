@@ -35,10 +35,12 @@ func (h *UserHandler) RegisterUser(c *gin.Context) {
 		response.ErrorResponse(c, 40000)
 		return
 	}
+
 	if err := h.s.CreateUser(c, req.Username, req.Password); err != nil {
 		response.ErrorResponse(c, 40000)
 		return
 	}
+
 	response.SuccessResponse(c, 20000, gin.H{})
 }
 
@@ -48,6 +50,7 @@ func (h *UserHandler) LoginUser(c *gin.Context) {
 		response.ErrorResponse(c, 40000)
 		return
 	}
+
 	id, err := h.s.GetUserByUsername(c, req.Username, req.Password)
 	if err != nil {
 		response.ErrorResponse(c, 40401)

@@ -13,7 +13,7 @@ type JwtMaker struct {
 }
 
 // CreateToken implements Maker.
-func (j *JwtMaker) CreateToken(sub uuid.UUID, duration time.Duration) (string, error) {
+func (j *JwtMaker) CreateToken(sub int32, duration time.Duration) (string, error) {
 	claims, err := NewPayload(uuid.New(), sub, duration)
 	if err != nil {
 		return "", err
