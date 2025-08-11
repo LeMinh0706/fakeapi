@@ -11,7 +11,7 @@ func InitRouter() *gin.Engine {
 	s := NewService(conn)
 
 	// Initialize user service
-	users.RegisterRouter(router.Group("/auth"), s.user)
+	users.RegisterRouter(router.Group("/auth"), s.user, s.jwt, s.pas)
 
 	return router
 }

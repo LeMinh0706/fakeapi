@@ -57,7 +57,9 @@ type DBAttributes struct {
 type TokenConfig struct {
 	SecretKey  string        `env:"SECRET_KEY, default=secret"`
 	Secure     bool          `env:"SECURE, default=true"`
+	AccessKey  string        `env:"ACCESS_KEY, default=access_key"`
 	AccessTTL  time.Duration `env:"ACCESS_TTL, default=5m"`
+	RefreshKey string        `env:"REFRESH_KEY, default=mysecretkey32byteslongforpaseto12"`
 	RefreshTTL time.Duration `env:"REFRESH_TTL, default=24h"`
 	TestToken  string        `env:"TEST, default=nothing_here"`
 }

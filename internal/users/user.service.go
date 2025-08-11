@@ -2,6 +2,7 @@ package users
 
 import (
 	"context"
+	"log"
 
 	"github.com/LeMinh0706/fakeapi/internal/db"
 	"github.com/LeMinh0706/fakeapi/utils"
@@ -35,8 +36,10 @@ func (s *UserService) GetUserByUsername(ctx context.Context, username, password 
 	if err != nil {
 		return uuid.Nil, err
 	}
-	err = utils.CheckPassword(user.Password, password)
+
+	err = utils.CheckPassword(password, user.Password)
 	if err != nil {
+		log.Println("error here", user.Password, "<>", password)
 		return uuid.Nil, err
 	}
 	return user.ID, nil

@@ -30,7 +30,7 @@ func ErrorResponse(c *gin.Context, code int) {
 	c.JSON(http.StatusOK, ResponseData{
 		Code:    code,
 		Message: msg[code],
-		Data:    nil,
+		Data:    gin.H{},
 	})
 }
 
@@ -38,6 +38,6 @@ func ErrorNonKnow(c *gin.Context, code int, massage string) {
 	c.JSON(http.StatusOK, ResponseData{
 		Code:    code,
 		Message: massage,
-		Data:    nil,
+		Data:    gin.H{},
 	})
 }
