@@ -16,11 +16,7 @@ type BenchmarkHandler struct {
 }
 
 func (h *BenchmarkHandler) GetBenchmark(c *gin.Context) {
-
-	// res1, res2 := BenchmarkResult()
-	// response.SuccessResponse(c, 20000, res1)
-	// response.SuccessResponse(c, 20000, res2)
-	c.JSON(200, benchmarkData)
+	response.SuccessResponse(c, 20000, benchmarkData)
 }
 
 func (h *BenchmarkHandler) GetResults(c *gin.Context) {
