@@ -5,6 +5,7 @@ import (
 	"log"
 
 	"github.com/LeMinh0706/fakeapi/config"
+	"github.com/LeMinh0706/fakeapi/internal/benchmark"
 	"github.com/LeMinh0706/fakeapi/internal/candidates"
 	"github.com/LeMinh0706/fakeapi/internal/db"
 	"github.com/LeMinh0706/fakeapi/internal/users"
@@ -14,6 +15,7 @@ import (
 type Service struct {
 	user      *users.UserService
 	candidate *candidates.CandidateService
+	benchmark *benchmark.BenchmarkService
 	jwt       token.Maker
 	pas       token.Maker
 }
@@ -29,6 +31,7 @@ func NewService(conn *sql.DB) *Service {
 	return &Service{
 		user:      users.NewUserService(q),
 		candidate: candidates.NewCandidateService(q),
+		benchmark: benchmark.NewBenchmarkService(q),
 		jwt:       jwt,
 		pas:       pas,
 	}

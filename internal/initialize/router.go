@@ -14,7 +14,7 @@ func InitRouter() *gin.Engine {
 
 	// Initialize user service
 	users.RegisterRouter(router.Group("/auth"), s.user, s.jwt, s.pas)
-	benchmark.RegisterRouter(router.Group("/benchmark"))
+	benchmark.RegisterRouter(router.Group("/benchmark"), s.benchmark)
 	candidates.RegisterRouter(router.Group("/candidates"), s.candidate)
 
 	return router

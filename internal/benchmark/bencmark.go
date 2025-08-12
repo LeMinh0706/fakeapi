@@ -7,6 +7,8 @@ var benchmarkData gin.H = gin.H{
 	"benchmark_results": []gin.H{
 		{
 			"candidate_id":  "e3e54b26-f1ce-44b0-8d86-cb27e5237bf3",
+			"email":         "leminhken124356@gmail.com",
+			"applied":       "backend",
 			"overall_score": 34.65,
 			"score": gin.H{
 				"certificate": gin.H{
@@ -63,6 +65,8 @@ var benchmarkData gin.H = gin.H{
 		},
 		{
 			"candidate_id":  "7575acae-c9df-4919-a5a4-648abb481f46",
+			"email":         "nguyenhuuluanit69@gmail.com",
+			"applied":       "fullstack",
 			"overall_score": 49.763125,
 			"score": gin.H{
 				"certificate": gin.H{
@@ -126,6 +130,8 @@ var benchmarkData gin.H = gin.H{
 		},
 		{
 			"candidate_id":  "15cc89ef-e0a7-4d88-8792-69ebbc02ba76",
+			"email":         "phamnamduong583@gmail.com",
+			"applied":       "frontend",
 			"overall_score": 44.325625,
 			"score": gin.H{
 				"certificate": gin.H{
@@ -198,56 +204,9 @@ var benchmarkData gin.H = gin.H{
 			},
 		},
 		{
-			"candidate_id":  "35f56c56-787d-4551-97e6-96ea7a3a7603",
-			"overall_score": 36.54,
-			"score": gin.H{
-				"certificate": gin.H{
-					"total_score": 0.0,
-				},
-				"language": gin.H{
-					"total_score": 65.0,
-					"detailed_score": gin.H{
-						"english":         65.0,
-						"other_languages": 0.0,
-					},
-				},
-				"education": gin.H{
-					"total_score": 64.0,
-					"detailed_score": gin.H{
-						"degree":     19.0,
-						"university": 25.0,
-						"major":      10.0,
-						"gpa":        10.0,
-					},
-				},
-				"experience": gin.H{
-					"total_score": 0.0,
-					"detailed_score": gin.H{
-						"job_relevance":       0.0,
-						"stability":           0.0,
-						"predicted_level":     "Fresher",
-						"matching_job_titles": []string{},
-					},
-				},
-				"skills": gin.H{
-					"total_score": 57.3,
-					"detail_score": gin.H{
-						"c# - csm":                         61.8,
-						"java - csm":                       58.6,
-						"sql - data-driven transformation": 57.8,
-						"git - software development":       56.6,
-						"postman - pmp":                    61.8,
-						"bootstrap - csm":                  54.8,
-						"html - csm":                       56.2,
-						"flutter - agile":                  55.2,
-						"dart - safe":                      57.1,
-						"asp.net - software development":   53.1,
-					},
-				},
-			},
-		},
-		{
 			"candidate_id":  "37eadf14-d329-4509-b5cd-8baade5e3efd",
+			"email":         "camtu28082003@gmail.com",
+			"applied":       "frontend",
 			"overall_score": 61.09,
 			"score": gin.H{
 				"certificate": gin.H{

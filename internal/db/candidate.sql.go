@@ -7,7 +7,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 
 	"github.com/google/uuid"
 )
@@ -17,9 +16,9 @@ SELECT id, applied_position, email FROM candidate
 `
 
 type GetCandidateRow struct {
-	ID              uuid.UUID      `json:"id"`
-	AppliedPosition sql.NullString `json:"applied_position"`
-	Email           sql.NullString `json:"email"`
+	ID              uuid.UUID `json:"id"`
+	AppliedPosition string    `json:"applied_position"`
+	Email           string    `json:"email"`
 }
 
 func (q *Queries) GetCandidate(ctx context.Context) ([]GetCandidateRow, error) {

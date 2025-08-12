@@ -8,6 +8,7 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"fmt"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -54,40 +55,40 @@ func (ns NullBenchmarkKtype) Value() (driver.Value, error) {
 }
 
 type BenchmarkResult struct {
-	CandidateID      uuid.NullUUID      `json:"candidate_id"`
-	JobDescriptionID uuid.NullUUID      `json:"job_description_id"`
-	BenchmarkType    NullBenchmarkKtype `json:"benchmark_type"`
+	CandidateID      uuid.UUID      `json:"candidate_id"`
+	JobDescriptionID uuid.UUID      `json:"job_description_id"`
+	BenchmarkType    BenchmarkKtype `json:"benchmark_type"`
 }
 
 type BenchmarkResultDetail struct {
-	ID               int32              `json:"id"`
-	CandidateID      uuid.NullUUID      `json:"candidate_id"`
-	JobDescriptionID uuid.NullUUID      `json:"job_description_id"`
-	BenchmarkType    NullBenchmarkKtype `json:"benchmark_type"`
-	Result           sql.NullString     `json:"result"`
+	ID               int32          `json:"id"`
+	CandidateID      uuid.UUID      `json:"candidate_id"`
+	JobDescriptionID uuid.UUID      `json:"job_description_id"`
+	BenchmarkType    BenchmarkKtype `json:"benchmark_type"`
+	Result           string         `json:"result"`
 }
 
 type Candidate struct {
 	ID              uuid.UUID      `json:"id"`
-	AppliedPosition sql.NullString `json:"applied_position"`
-	Email           sql.NullString `json:"email"`
-	CvInfo          sql.NullString `json:"cv_info"`
-	CvPath          sql.NullString `json:"cv_path"`
+	AppliedPosition string         `json:"applied_position"`
+	Email           string         `json:"email"`
+	CvInfo          string         `json:"cv_info"`
+	CvPath          string         `json:"cv_path"`
 	OriginalCvName  sql.NullString `json:"original_cv_name"`
-	FileHash        sql.NullString `json:"file_hash"`
-	PlainText       sql.NullString `json:"plain_text"`
+	FileHash        string         `json:"file_hash"`
+	PlainText       string         `json:"plain_text"`
 	Embedding       interface{}    `json:"embedding"`
-	CreatedAt       sql.NullTime   `json:"created_at"`
+	CreatedAt       time.Time      `json:"created_at"`
 }
 
 type JobDescription struct {
-	ID        uuid.UUID      `json:"id"`
-	PlainText sql.NullString `json:"plain_text"`
-	JobTitle  sql.NullString `json:"job_title"`
-	JdPath    sql.NullString `json:"jd_path"`
-	FileHash  sql.NullString `json:"file_hash"`
-	JdInfo    sql.NullString `json:"jd_info"`
-	Embedding interface{}    `json:"embedding"`
+	ID        uuid.UUID   `json:"id"`
+	PlainText string      `json:"plain_text"`
+	JobTitle  string      `json:"job_title"`
+	JdPath    string      `json:"jd_path"`
+	FileHash  string      `json:"file_hash"`
+	JdInfo    string      `json:"jd_info"`
+	Embedding interface{} `json:"embedding"`
 }
 
 type User struct {
