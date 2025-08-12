@@ -25,6 +25,7 @@ func (s *UserService) CreateUser(ctx context.Context, username, password string)
 	}
 	return s.q.CreateUser(ctx, db.CreateUserParams{
 		Email:          username,
+		FullName:       "admin",
 		HashedPassword: hash,
 	})
 }

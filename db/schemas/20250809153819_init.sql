@@ -63,6 +63,6 @@ DROP TABLE IF EXISTS "benchmark_result_detail";
 DROP TABLE IF EXISTS "benchmark_result";
 DROP TABLE IF EXISTS "job_description";
 DROP TABLE IF EXISTS "candidate";
-DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS "users";
 DROP TYPE IF EXISTS "benchmark_ktype";
 -- +goose StatementEnd

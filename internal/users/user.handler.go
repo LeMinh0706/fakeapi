@@ -37,7 +37,7 @@ func (h *UserHandler) RegisterUser(c *gin.Context) {
 	}
 
 	if err := h.s.CreateUser(c, req.Username, req.Password); err != nil {
-		response.ErrorResponse(c, 40000)
+		response.ErrorNonKnow(c, 50000, err.Error())
 		return
 	}
 
