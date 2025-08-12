@@ -3,7 +3,6 @@ package benchmark
 import "github.com/gin-gonic/gin"
 
 var benchmarkData gin.H = gin.H{
-	"jd_id": "0d2042d2-8996-4d5b-9e31-69bf6763add3",
 	"benchmark_results": []gin.H{
 		{
 			"candidate_id":  "e3e54b26-f1ce-44b0-8d86-cb27e5237bf3",
@@ -266,4 +265,22 @@ var benchmarkData gin.H = gin.H{
 			},
 		},
 	},
+}
+
+func BenchmarkResult() ([]gin.H, []gin.H) {
+	var res1, res2 []gin.H
+
+	results, ok := benchmarkData["benchmark_results"].([]gin.H)
+	if !ok {
+		return res1, res2
+	}
+
+	for i, v := range results {
+		if i%2 == 0 {
+			res1 = append(res1, v)
+		} else {
+			res2 = append(res2, v)
+		}
+	}
+	return res1, res2
 }

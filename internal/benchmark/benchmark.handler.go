@@ -1,6 +1,8 @@
 package benchmark
 
 import (
+	"strconv"
+
 	"github.com/LeMinh0706/fakeapi/pkg/response"
 	"github.com/gin-gonic/gin"
 )
@@ -16,7 +18,18 @@ type BenchmarkHandler struct {
 }
 
 func (h *BenchmarkHandler) GetBenchmark(c *gin.Context) {
-	response.SuccessResponse(c, 20000, benchmarkData)
+	pageStr := c.Query("page")
+	page, err := strconv.Atoi(pageStr)
+	if err != nil {
+		response.ErrorResponse(c, 40000)
+		return
+	}
+	res1, res2 := BenchmarkResult()
+	if page > 1 {
+		response.SuccessResponse(c, 20000, res1)
+		return
+	}
+	response.SuccessResponse(c, 20000, res2)
 }
 
 func (h *BenchmarkHandler) GetResults(c *gin.Context) {
